@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:sayfalar="clr-namespace:XamarinShellUygulamasi.Sayfalar"
+             xmlns:local="clr-namespace:XamarinShellUygulamasi"
+             xmlns:kontroller="clr-namespace:XamarinShellUygulamasi.Kontroller"
+             mc:Ignorable="d"
+             x:Class="XamarinShellUygulamasi.AppShell" 
+              FlyoutBackgroundImage="photo.jpg"
+            FlyoutBackgroundImageAspect="AspectFill"
+            FlyoutHeaderBehavior="CollapseOnScroll">
+
+    <Shell.Resources>
+        <Style x:Key="BaseStyle"
+               TargetType="Element">
+            <Setter Property="Shell.BackgroundColor"
+                    Value="#455A64" />
+            <Setter Property="Shell.ForegroundColor"
+                    Value="White" />
+            <Setter Property="Shell.TitleColor"
+                    Value="White" />
+            <Setter Property="Shell.DisabledColor"
+                    Value="#B4FFFFFF" />
+            <Setter Property="Shell.UnselectedColor"
+                    Value="#95FFFFFF" />
+        </Style>
+        <Style TargetType="ShellItem"
+               BasedOn="{StaticResource BaseStyle}" />
+                
+        <Style x:Key="AnasayfaShell"
+               TargetType="Element"
+               BasedOn="{StaticResource BaseStyle}">
+            <Setter Property="Shell.BackgroundColor"
+                    Value="#ED3B3B" />
+        </Style>
+        <Style x:Key="DenemeShell"
+               TargetType="Element"
+               BasedOn="{StaticResource BaseStyle}">
+            <Setter Property="Shell.BackgroundColor"
+                    Value="#546DFE" />
+        </Style>
+        <Style x:Key="AboutShell"
+               TargetType="Element"
+               BasedOn="{StaticResource BaseStyle}">
+            <Setter Property="Shell.BackgroundColor"
+                    Value="#96d1ff" />
+        </Style>
+    </Shell.Resources>
+
+    <Shell.FlyoutHeader>
+        <kontroller:FlayoutHeader />
+    </Shell.FlyoutHeader>
+
+    <FlyoutItem Route="sayfalar"
+                Title="Sayfalar"                
+                FlyoutDisplayOptions="AsMultipleItems">        
+        <Tab Title="Üst Tap"
+             Route="usttap"
+             Icon="tablar.png">
+            <ShellContent Route="tab1"
+                          Title="Tab 1"  
+                          Icon="tab1.png"
+                          Style="{StaticResource DenemeShell}"
+                          ContentTemplate="{DataTemplate sayfalar:Tab1Page}" />
+            <ShellContent Route="tab2"
+                          Title="Tab 2"
+                          Icon="tab2.png"
+                          Style="{StaticResource DenemeShell}"
+                          ContentTemplate="{DataTemplate sayfalar:Tab2Page}" />
+        </Tab>
+        <ShellContent Route="sayfa1"
+                      Title="Sayfa 1"
+                      Icon="sayfa1.png"
+                      Style="{StaticResource AnasayfaShell}"
+                      ContentTemplate="{DataTemplate sayfalar:Sayfa1Page}" />
+        <ShellContent Route="sayfa2"
+                      Title="Sayfa 2"
+                      Icon="sayfa2.png"
+                      Style="{StaticResource AnasayfaShell}"
+                      ContentTemplate="{DataTemplate sayfalar:Sayfa2Page}" />
+        <ShellContent Route="sayfa3"
+                      Title="Sayfa 3"
+                      Icon="sayfa3.png"
+                      Style="{StaticResource AnasayfaShell}"
+                      ContentTemplate="{DataTemplate sayfalar:Sayafa3Page}" />
+    </FlyoutItem>
+
+    <MenuItem Text="Hakkımızda" 
+              IconImageSource="hakimizda.png"              
+              Clicked="MenuItem_Clicked" />
+
+    <!--
+
+    <TabBar>
+        <Tab Title="Tablar"
+             Icon="tablar.png">
+            <ShellContent Title="Tab1">
+                <sayfalar:Tab1Page/>
+            </ShellContent>
+            <ShellContent Title="Tab2">
+                 <sayfalar:Tab2Page/>
+             </ShellContent>
+        </Tab>
+        <Tab Title="Safya1-2"
+             Icon="safya1.png">
+            <ShellContent Title="Sayfa1">
+                <sayfalar:Sayfa1Page/>
+            </ShellContent>
+            <ShellContent Title="Sayfa2">
+                <sayfalar:Sayfa2Page/>
+            </ShellContent>
+        </Tab>
+        <Tab Title="Safya3">
+            <ShellContent>
+                <sayfalar:Sayafa3Page/>
+            </ShellContent>
+        </Tab>
+    </TabBar>
+   -->
+   <!--
+    <Shell.FlyoutHeaderTemplate>
+        <DataTemplate>
+            <Grid BackgroundColor="Black"
+                  HeightRequest="200">
+                <Image Aspect="AspectFill" 
+                       Source="xamarinstore.jpg" 
+                       Opacity="0.6" />
+                <Label Text="Menüm" 
+                       TextColor="White" 
+                       FontAttributes="Bold" 
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center" />
+            </Grid>
+        </DataTemplate>
+    </Shell.FlyoutHeaderTemplate>
+
+    
+    <FlyoutItem Route="sayfalar"
+                Title="Sayfalar"
+                FlyoutDisplayOptions="AsMultipleItems"
+                IsTabStop="False">
+        <Tab Title="Üst Tap"
+             Route="usttap">
+            <ShellContent Route="tab1"
+                          Title="Tab 1"
+                          ContentTemplate="{DataTemplate sayfalar:Tab1Page}" />
+            <ShellContent Route="tab2"
+                          Title="Tab 2"
+                          Icon="dog.png"
+                          ContentTemplate="{DataTemplate sayfalar:Tab2Page}" />
+        </Tab>
+        <ShellContent Route="sayfa1"
+                      Title="Sayfa 1"
+                      ContentTemplate="{DataTemplate sayfalar:Sayfa1Page}" />
+        <ShellContent Route="sayfa2"
+                      Title="Sayfa 2"
+                      ContentTemplate="{DataTemplate sayfalar:Sayfa2Page}" />
+        <ShellContent Route="sayfa3"
+                      Title="Sayfa 3"
+                      ContentTemplate="{DataTemplate sayfalar:Sayafa3Page}" />
+    </FlyoutItem>
+
+    <ShellContent Title="Ana Sayfa"
+                  Style="{StaticResource AnasayfaShell}">
+        <local:MainPage/>
+    </ShellContent>
+    <ShellContent Title="Hakkımızda"
+                  Style="{StaticResource AboutShell}">
+        <sayfalar:AboutPage/>
+    </ShellContent>
+
+    <ShellContent Title="Deneme"
+                  Style="{StaticResource DenemeShell}"
+                  ContentTemplate="{DataTemplate sayfalar:DenemePage}" />
+
+    <sayfalar:AboutPage />
+    
+    <MenuItem Text="Yardım"
+              IconImageSource="help.png"
+              Clicked="MenuItem_Clicked" />
+    -->
+</Shell>

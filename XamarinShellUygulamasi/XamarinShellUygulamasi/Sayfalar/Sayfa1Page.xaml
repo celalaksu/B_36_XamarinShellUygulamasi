@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+              xmlns:kontroller="clr-namespace:XamarinShellUygulamasi.Kontroller"
+             xmlns:veri="clr-namespace:XamarinShellUygulamasi.Veri"
+             mc:Ignorable="d"
+             x:Class="XamarinShellUygulamasi.Sayfalar.Sayfa1Page">
+
+    <Shell.SearchHandler>
+        <kontroller:TabAramaYoneticisi Placeholder="Aradığınız terimi girin"
+                                      ShowsResults="true"
+                                      DisplayMemberName="Detay">
+            <kontroller:TabAramaYoneticisi.ItemTemplate>
+                
+                <DataTemplate>
+                    <Grid Padding="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Text="{Binding Detay}"
+                               FontAttributes="Bold"/>
+                    </Grid>
+                </DataTemplate>
+            </kontroller:TabAramaYoneticisi.ItemTemplate>
+        </kontroller:TabAramaYoneticisi>
+    </Shell.SearchHandler>
+
+
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical">
+            <ListView x:Name="dataListView" ItemSelected="dataListView_ItemSelected"
+                      ItemsSource="{x:Static veri:NotlarVerisi.Notlarim}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding Detay}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
